@@ -159,6 +159,7 @@ public class DatabaseConnector extends StdCouchDbConnector {
      */
     public <T> List<T> get(Class<T> type, Collection<String> ids, boolean ignoreNotFound) {
         if (ids == null) return Collections.emptyList();
+        ids.removeAll(Collections.singleton(null));
 
         // Copy to set in order to avoid duplicates
         Set<String> idSet = ImmutableSet.copyOf(ids);

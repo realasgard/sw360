@@ -705,6 +705,7 @@ public class LicenseDatabaseHandler {
 
     public List<Todo> getTodosByIds(Collection<String> ids) {
         final List<Todo> todos = todoRepository.get(ids);
+        todos.removeAll(Collections.singleton(null));
         fillTodos(todos);
         return todos;
     }
